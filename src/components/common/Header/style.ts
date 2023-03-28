@@ -12,10 +12,14 @@ export const Header = styled.header`
 
 export const HeaderContents = styled.div`
   width: 79.75%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const LogoWrap = styled.button`
   display: flex;
+  align-items: center;
 `;
 
 export const LogoText = styled.p`
@@ -32,4 +36,20 @@ export const LogoText = styled.p`
   }
 
   font-family: "GmarketSansMedium";
+`;
+
+export const LoginButton = styled.button`
+  border: 1px solid #e1e4e2;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  border-radius: 3.5rem;
+`;
+
+export const LoginText = styled.p`
+  font-weight: 500;
+  font-size: 1rem;
+  color: #303632;
+  margin: 0.5rem;
+  margin-left: 0.875rem;
 `;

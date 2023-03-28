@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./style";
-import { Logo } from "assets";
+import { Logo, LoginIcon } from "assets";
 
 const Header: React.FC = () => {
   return (
@@ -10,6 +10,10 @@ const Header: React.FC = () => {
           <Logo />
           <S.LogoText>ATC</S.LogoText>
         </S.LogoWrap>
+        <S.LoginButton>
+          <S.LoginText>로그인</S.LoginText>
+          <LoginIcon />
+        </S.LoginButton>
       </S.HeaderContents>
     </S.Header>
   );
