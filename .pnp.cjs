@@ -33,6 +33,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.15.10"],\
             ["@types/react", "npm:18.0.29"],\
             ["@types/react-dom", "npm:18.0.11"],\
+            ["emotion-reset", "virtual:ec8b260ee71c9aea6973341e55de7034a7b05a50d9c5df7f1d8954a68530c218673817f0ce030bc4ec67fc3429fa5b9330b2e9da1fba68a6de295c496e224e9c#npm:3.0.1"],\
             ["eslint", "npm:8.36.0"],\
             ["eslint-config-next", "virtual:ec8b260ee71c9aea6973341e55de7034a7b05a50d9c5df7f1d8954a68530c218673817f0ce030bc4ec67fc3429fa5b9330b2e9da1fba68a6de295c496e224e9c#npm:13.2.4"],\
             ["next", "virtual:ec8b260ee71c9aea6973341e55de7034a7b05a50d9c5df7f1d8954a68530c218673817f0ce030bc4ec67fc3429fa5b9330b2e9da1fba68a6de295c496e224e9c#npm:13.2.4"],\
@@ -941,6 +942,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.15.10"],\
             ["@types/react", "npm:18.0.29"],\
             ["@types/react-dom", "npm:18.0.11"],\
+            ["emotion-reset", "virtual:ec8b260ee71c9aea6973341e55de7034a7b05a50d9c5df7f1d8954a68530c218673817f0ce030bc4ec67fc3429fa5b9330b2e9da1fba68a6de295c496e224e9c#npm:3.0.1"],\
             ["eslint", "npm:8.36.0"],\
             ["eslint-config-next", "virtual:ec8b260ee71c9aea6973341e55de7034a7b05a50d9c5df7f1d8954a68530c218673817f0ce030bc4ec67fc3429fa5b9330b2e9da1fba68a6de295c496e224e9c#npm:13.2.4"],\
             ["next", "virtual:ec8b260ee71c9aea6973341e55de7034a7b05a50d9c5df7f1d8954a68530c218673817f0ce030bc4ec67fc3429fa5b9330b2e9da1fba68a6de295c496e224e9c#npm:13.2.4"],\
@@ -1308,6 +1310,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/emoji-regex-npm-9.2.2-e6fac8d058-8487182da7.zip/node_modules/emoji-regex/",\
           "packageDependencies": [\
             ["emoji-regex", "npm:9.2.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["emotion-reset", [\
+        ["npm:3.0.1", {\
+          "packageLocation": "./.yarn/cache/emotion-reset-npm-3.0.1-061e1e27b7-788cfbf6f3.zip/node_modules/emotion-reset/",\
+          "packageDependencies": [\
+            ["emotion-reset", "npm:3.0.1"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:ec8b260ee71c9aea6973341e55de7034a7b05a50d9c5df7f1d8954a68530c218673817f0ce030bc4ec67fc3429fa5b9330b2e9da1fba68a6de295c496e224e9c#npm:3.0.1", {\
+          "packageLocation": "./.yarn/__virtual__/emotion-reset-virtual-ced6d96248/0/cache/emotion-reset-npm-3.0.1-061e1e27b7-788cfbf6f3.zip/node_modules/emotion-reset/",\
+          "packageDependencies": [\
+            ["emotion-reset", "virtual:ec8b260ee71c9aea6973341e55de7034a7b05a50d9c5df7f1d8954a68530c218673817f0ce030bc4ec67fc3429fa5b9330b2e9da1fba68a6de295c496e224e9c#npm:3.0.1"],\
+            ["@emotion/react", "virtual:ec8b260ee71c9aea6973341e55de7034a7b05a50d9c5df7f1d8954a68530c218673817f0ce030bc4ec67fc3429fa5b9330b2e9da1fba68a6de295c496e224e9c#npm:11.10.6"],\
+            ["@types/emotion__react", null]\
+          ],\
+          "packagePeers": [\
+            "@emotion/react",\
+            "@types/emotion__react"\
           ],\
           "linkType": "HARD"\
         }]\
