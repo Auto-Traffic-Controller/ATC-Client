@@ -17,12 +17,18 @@ export const HeaderContents = styled.div`
   align-items: center;
 `;
 
+export const UserWrap = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const LoginButton = styled.button`
   border: 1px solid #e1e4e2;
   padding: 0.25rem;
   display: flex;
   align-items: center;
   border-radius: 3.5rem;
+  margin-left: 1.68rem;
 `;
 
 export const LoginText = styled.p`

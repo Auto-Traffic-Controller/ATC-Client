@@ -1,16 +1,20 @@
 import React from "react";
 import * as S from "./style";
-import { Logo, LoginIcon } from "assets";
+import { Logo, LoginIcon, Alarm } from "assets";
 
 const Header: React.FC = () => {
+  const userId = "hellogsm";
   return (
     <S.Header>
       <S.HeaderContents>
         <Logo />
-        <S.LoginButton>
-          <S.LoginText>로그인</S.LoginText>
-          <LoginIcon />
-        </S.LoginButton>
+        <S.UserWrap>
+          <Alarm />
+          <S.LoginButton>
+            <S.LoginText>{userId}</S.LoginText>
+            <LoginIcon />
+          </S.LoginButton>
+        </S.UserWrap>
       </S.HeaderContents>
     </S.Header>
   );
