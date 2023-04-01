@@ -12,6 +12,10 @@ const GlobalStyle = () => (
         background: ${pallete.gray};
       }
 
+      * {
+        box-sizing: border-box;
+      }
+
       button {
         background: inherit;
         border: none;
