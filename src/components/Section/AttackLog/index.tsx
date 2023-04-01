@@ -1,6 +1,8 @@
 import { SectionTitle } from "components/Section/style";
 import * as S from "./style";
 import { css } from "@emotion/react";
+import { useState } from "react";
+import { type } from "os";
 
 const testData = [
   {
@@ -80,11 +82,36 @@ const testData = [
   },
 ];
 
+type NewOrOld = "new" | "old";
+
 const AttackLog: React.FC = () => {
+  const [newOrOld, setNewOrOld] = useState<NewOrOld>("new");
+
+  const selectStyle = (selectedItem: NewOrOld) =>
+    newOrOld === selectedItem &&
+    css`
+      background: #cce6d2;
+      color: #49935c;
+    `;
+
   return (
     <S.AttackLogSection>
       <S.SectionHeader>
         <SectionTitle>공격 로그</SectionTitle>
+        <S.FilterWrap>
+          <S.NewOrOldButton
+            onClick={() => setNewOrOld("new")}
+            css={selectStyle("new")}
+          >
+            최신
+          </S.NewOrOldButton>
+          <S.NewOrOldButton
+            onClick={() => setNewOrOld("old")}
+            css={selectStyle("old")}
+          >
+            오래된
+          </S.NewOrOldButton>
+        </S.FilterWrap>
       </S.SectionHeader>
       <S.ListHeader>
         <S.ListHeaderText>IP 주소</S.ListHeaderText>
