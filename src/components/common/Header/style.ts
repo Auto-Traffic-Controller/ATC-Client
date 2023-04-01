@@ -11,7 +11,7 @@ export const Header = styled.header`
 `;
 
 export const HeaderContents = styled.div`
-  width: 79%;
+  width: 91.6%;
   display: flex;
   justify-content: space-between;
   align-items: center;
