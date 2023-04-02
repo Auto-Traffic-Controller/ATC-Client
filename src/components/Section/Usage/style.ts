@@ -2,10 +2,53 @@ import pallete from "styles/pallete";
 import styled from "@emotion/styled";
 import { Section } from "components/Section/style";
 
+interface UsageChartType {
+  percentage: number;
+  fillColor: string;
+}
+
 export const UsageSection = styled(Section)`
-  width: 28%;
+  width: 24.3%;
   background: #ffffff;
   border-radius: 0.5rem;
+`;
+
+export const UsageChart = styled.div<UsageChartType>`
+  width: 21rem;
+  height: 14rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin: 0 auto 2rem;
+  &::after {
+    content: "";
+    width: 21rem;
+    height: 21rem;
+    border: 20px solid;
+    border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15)
+      ${({ fillColor }) => fillColor} ${({ fillColor }) => fillColor};
+    position: absolute;
+    border-radius: 50%;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+    transform: rotate(
+      calc(1deg * (-45 + ${({ percentage }) => percentage} * 1.8))
+    );
+  }
+`;
+
+export const UsagePercentage = styled.p`
+  font-weight: 700;
+  font-size: 2.5rem;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 export const StatusBox = styled.div`

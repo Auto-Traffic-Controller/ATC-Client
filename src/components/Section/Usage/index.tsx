@@ -4,10 +4,14 @@ import * as S from "./style";
 
 const Usage = () => {
   const status = "보통";
+  const usagePercentage = 50;
 
   return (
     <S.UsageSection>
       <SectionTitle>CPU 사용량</SectionTitle>
+      <S.UsageChart fillColor="#919BF3" percentage={usagePercentage}>
+        <S.UsagePercentage>{usagePercentage}%</S.UsagePercentage>
+      </S.UsageChart>
       <S.StatusBox>
         <S.StatusIconWrap>
           <GoodStatus />
