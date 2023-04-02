@@ -2,7 +2,6 @@ import { SectionTitle } from "components/Section/style";
 import * as S from "./style";
 import { css } from "@emotion/react";
 import { useState } from "react";
-import { type } from "os";
 
 const testData = [
   {
