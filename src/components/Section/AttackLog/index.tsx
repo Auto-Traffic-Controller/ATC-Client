@@ -111,6 +111,9 @@ const AttackLog: React.FC = () => {
           >
             오래된
           </S.NewOrOldButton>
+          <S.AttackTypeFilter>
+            <option>공격유형</option>
+          </S.AttackTypeFilter>
         </S.FilterWrap>
       </S.SectionHeader>
       <S.ListHeader>

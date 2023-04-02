@@ -24,6 +24,16 @@ export const NewOrOldButton = styled.button`
   font-size: 0.875rem;
 `;
 
+export const AttackTypeFilter = styled.select`
+  background: #cce6d2;
+  border-radius: 0.25rem;
+  color: #49935c;
+  font-weight: 600;
+  font-size: 0.875rem;
+  height: 2rem;
+  padding: 0.469rem 0.75rem;
+`;
+
 export const ListHeader = styled.div`
   background: #f7f7f8;
   border-radius: 0.25rem;
