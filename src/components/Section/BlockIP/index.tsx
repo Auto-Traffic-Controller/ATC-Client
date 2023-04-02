@@ -5,6 +5,84 @@ import * as S from "./style";
 
 type NewOrOld = "new" | "old";
 
+const testData = [
+  {
+    IP: "192.168.123.123",
+    country: "🇰🇷 Korea",
+    time: "8시 35분",
+  },
+  {
+    IP: "192.168.123.123",
+    country: "🇰🇷 Korea",
+    time: "8시 35분",
+  },
+  {
+    IP: "192.168.123.123",
+    country: "🇰🇷 Korea",
+    time: "8시 35분",
+  },
+  {
+    IP: "192.168.123.123",
+    country: "🇰🇷 Korea",
+    time: "8시 35분",
+  },
+  {
+    IP: "192.168.123.123",
+    country: "🇰🇷 Korea",
+    time: "8시 35분",
+  },
+  {
+    IP: "192.168.123.123",
+    country: "🇰🇷 Korea",
+    time: "8시 35분",
+  },
+  {
+    IP: "192.168.123.123",
+    country: "🇰🇷 Korea",
+    time: "8시 35분",
+  },
+  {
+    IP: "192.168.123.123",
+    country: "🇰🇷 Korea",
+    time: "8시 35분",
+  },
+  {
+    IP: "192.168.123.123",
+    country: "🇰🇷 Korea",
+    time: "8시 35분",
+  },
+  {
+    IP: "192.168.123.123",
+    country: "🇰🇷 Korea",
+    time: "8시 35분",
+  },
+  {
+    IP: "192.168.123.123",
+    country: "🇰🇷 Korea",
+    time: "8시 35분",
+  },
+  {
+    IP: "192.168.123.123",
+    country: "🇰🇷 Korea",
+    time: "8시 35분",
+  },
+  {
+    IP: "192.168.123.123",
+    country: "🇰🇷 Korea",
+    time: "8시 35분",
+  },
+  {
+    IP: "192.168.123.123",
+    country: "🇰🇷 Korea",
+    time: "8시 35분",
+  },
+  {
+    IP: "192.168.123.123",
+    country: "🇰🇷 Korea",
+    time: "8시 35분",
+  },
+];
+
 const BlockIP: React.FC = () => {
   const [newOrOld, setNewOrOld] = useState<NewOrOld>("new");
 
@@ -37,18 +115,31 @@ const BlockIP: React.FC = () => {
           </S.AttackTypeFilter>
         </S.FilterWrap>
       </S.SectionHeader>
+      <S.ListHeader>
+        <S.ListHeaderText>IP 주소</S.ListHeaderText>
+        <S.ListHeaderText>국가</S.ListHeaderText>
+        <S.ListHeaderText
+          css={css`
+            text-align: end;
+          `}
+        >
+          시간
+        </S.ListHeaderText>
+      </S.ListHeader>
       <S.ListWrapper>
-        <S.ListHeader>
-          <S.ListHeaderText>IP 주소</S.ListHeaderText>
-          <S.ListHeaderText>국가</S.ListHeaderText>
-          <S.ListHeaderText
-            css={css`
-              text-align: end;
-            `}
-          >
-            시간
-          </S.ListHeaderText>
-        </S.ListHeader>
+        {testData.map((data, index) => (
+          <S.ListElement key={index}>
+            <S.ListElementText>{data.IP}</S.ListElementText>
+            <S.ListElementText>{data.country}</S.ListElementText>
+            <S.ListElementText
+              css={css`
+                text-align: end;
+              `}
+            >
+              {data.time}
+            </S.ListElementText>
+          </S.ListElement>
+        ))}
       </S.ListWrapper>
     </S.BlockIPSection>
   );

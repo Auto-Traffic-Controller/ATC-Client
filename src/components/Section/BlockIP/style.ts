@@ -3,6 +3,7 @@ import { Section } from "components/Section/style";
 
 export const BlockIPSection = styled(Section)`
   width: 49.5%;
+  height: 28.875rem;
 `;
 
 export const SectionHeader = styled.div`
