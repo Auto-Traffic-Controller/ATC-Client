@@ -37,6 +37,19 @@ const BlockIP: React.FC = () => {
           </S.AttackTypeFilter>
         </S.FilterWrap>
       </S.SectionHeader>
+      <S.ListWrapper>
+        <S.ListHeader>
+          <S.ListHeaderText>IP 주소</S.ListHeaderText>
+          <S.ListHeaderText>국가</S.ListHeaderText>
+          <S.ListHeaderText
+            css={css`
+              text-align: end;
+            `}
+          >
+            시간
+          </S.ListHeaderText>
+        </S.ListHeader>
+      </S.ListWrapper>
     </S.BlockIPSection>
   );
 };
