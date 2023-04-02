@@ -24,6 +24,7 @@ const GlobalStyle = () => (
         padding: 0;
         overflow: visible;
         cursor: pointer;
+        font-family: "SUIT Variable", sans-serif;
       }
     `}
   />
