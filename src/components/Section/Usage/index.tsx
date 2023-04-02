@@ -1,10 +1,11 @@
 import { GoodStatus } from "assets";
 import { SectionTitle } from "components/Section/style";
+import { useState } from "react";
 import * as S from "./style";
 
 const Usage = () => {
   const status = "보통";
-  const usagePercentage = 50;
+  const [usagePercentage, setUsagePercntage] = useState(50);
 
   return (
     <S.UsageSection>

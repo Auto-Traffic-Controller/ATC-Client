@@ -29,15 +29,25 @@ export const UsageChart = styled.div<UsageChartType>`
     width: 21rem;
     height: 21rem;
     border: 20px solid;
-    border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15)
-      ${({ fillColor }) => fillColor} ${({ fillColor }) => fillColor};
+    border-color: rgba(0, 0, 0, 0.15)
+      ${({ percentage, fillColor }) =>
+        percentage > 60 ? fillColor : "rgba(0, 0, 0, 0.15)"}
+      ${({ percentage, fillColor }) =>
+        percentage > 25 ? fillColor : "rgba(0, 0, 0, 0.15)"}
+      ${({ fillColor }) => fillColor};
     position: absolute;
     border-radius: 50%;
     left: 0;
     top: 0;
     box-sizing: border-box;
     transform: rotate(
-      calc(1deg * (-45 + ${({ percentage }) => percentage} * 1.8))
+      calc(
+        1deg *
+          (
+            ${({ percentage }) => -70 + percentage / 2} +
+              ${({ percentage }) => percentage} * 1.8
+          )
+      )
     );
   }
 `;
