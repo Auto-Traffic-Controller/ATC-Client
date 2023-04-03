@@ -89,12 +89,15 @@ const Traffic = () => {
                 radius: 0,
                 borderColor: "#57AC6D",
                 backgroundColor: "#CCE6D2",
-                hoverBorderWidth: 4,
-                hoverRadius: 12,
+                hoverBorderWidth: 5,
+                hoverRadius: 10,
               },
             },
             maintainAspectRatio: false,
             plugins: { legend: { display: false } },
+            hover: {
+              intersect: false,
+            },
           }}
         />
       </S.ChartWrapper>
