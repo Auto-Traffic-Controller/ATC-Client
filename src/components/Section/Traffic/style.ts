@@ -10,6 +10,7 @@ export const TrafficSection = styled(Section)`
 export const SectionHeader = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 1rem;
 `;
 
 export const TrafficCategoryWrap = styled.div`
@@ -30,4 +31,8 @@ export const TrafficValueCategory = styled.p`
 
 export const TrafficValue = styled.p`
   color: #000000;
+`;
+
+export const ChartWrapper = styled.div`
+  height: 20.75rem;
 `;
