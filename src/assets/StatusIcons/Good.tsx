@@ -6,7 +6,7 @@ const Good = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect width="24" height="24" rx="12" fill="#57AC6D" />
+    <rect width="24" height="24" rx="12" fill="#919BF3" />
     <path
       d="M10.5 8.5C10.5 9.32843 9.82843 10 9 10C8.17157 10 7.5 9.32843 7.5 8.5C7.5 7.67157 8.17157 7 9 7C9.82843 7 10.5 7.67157 10.5 8.5Z"
       fill="#FEFEFE"
