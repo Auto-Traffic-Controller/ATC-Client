@@ -6,9 +6,9 @@ import {
 import type { AppProps } from "next/app";
 import GlobalStyle from "styles/GlobalStyle";
 
-const client = new QueryClient();
-
 export default function App({ Component, pageProps }: AppProps) {
+  const client = new QueryClient();
+
   return (
     <>
       <QueryClientProvider client={client}>
