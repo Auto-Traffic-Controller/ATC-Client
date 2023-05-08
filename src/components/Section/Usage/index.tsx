@@ -37,7 +37,9 @@ const Usage = () => {
         fillColor={chartFillColor(status)}
         percentage={cpuUsage ?? 0}
       >
-        <S.UsagePercentage>{cpuUsage ?? 0}%</S.UsagePercentage>
+        <S.ChartDecorate>
+          <S.UsagePercentage>{cpuUsage ?? 0}%</S.UsagePercentage>
+        </S.ChartDecorate>
       </S.UsageChart>
       <S.StatusBox>
         <S.StatusIconWrap>
@@ -57,9 +59,9 @@ const chartFillColor = (status: StatusType) => {
     case "좋음":
       return "#919BF3";
     case "보통":
-      return "##F3CC91";
+      return "#F3CC91";
     case "나쁨":
-      return "##F39191";
+      return "#F39191";
   }
 };
 
