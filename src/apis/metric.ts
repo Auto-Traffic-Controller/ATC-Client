@@ -9,7 +9,7 @@ export function useGetCPUUsage() {
     metricKey.CPU,
     () => getRequest(metricUrl.getCPUUsage()),
     {
-      // refetchInterval: 1000,
+      refetchInterval: 1000,
     }
   );
 
@@ -23,7 +23,7 @@ export function useGetNetworkPackets() {
     metricKey.network,
     () => getRequest(metricUrl.getNetworkPackets()),
     {
-      // refetchInterval: 1000,
+      refetchInterval: 1000,
     }
   );
 
