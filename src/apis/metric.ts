@@ -18,7 +18,7 @@ export function useGetCPUUsage() {
     metricKey.CPU,
     () => getUsage(metricUrl.getCPUUsage()),
     {
-      // refetchInterval: 1000,
+      refetchInterval: 1000,
     }
   );
 
