@@ -1,7 +1,7 @@
 import { axiosClient } from "libs/api/axios/client";
 import { useQuery } from "@tanstack/react-query";
 import { metricKey } from "./queryKeys";
-import { CPUMetricType } from "types/metric";
+import { CPUMetricType, getNetworkMetricType } from "types/metric";
 import { metricUrl } from "libs/api/apiUrlController";
 
 async function getUsage(url: string) {
@@ -28,15 +28,15 @@ export function useGetCPUUsage() {
 }
 
 export function useGetNetworkPackets() {
-  const query = useQuery(
+  const query = useQuery<getNetworkMetricType>(
     metricKey.network,
     () => getUsage(metricUrl.getNetworkPackets()),
     {
-      // refetchInterval: 1000,
+      refetchInterval: 1000,
     }
   );
 
   const { data } = query;
 
-  return { networkPackets: data?.network ?? 0 };
+  return { networkPackets: data?.network || [] };
 }
