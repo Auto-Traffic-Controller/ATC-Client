@@ -7,6 +7,6 @@ interface NetworkMetricType {
   packet: number;
 }
 
-export interface getAllNetworkMetricType {
+export interface getNetworkMetricType {
   network: NetworkMetricType[];
 }
