@@ -35,6 +35,10 @@ export const UsageChart = styled.div<UsageChartType>`
       ${({ percentage, fillColor }) =>
         percentage > 25 ? fillColor : "rgba(0, 0, 0, 0.15)"}
       ${({ fillColor }) => fillColor};
+    -webkit-transition: transform 500ms ease-out;
+    -moz-transition: transform 500ms ease-out;
+    -o-transition: transform 500ms ease-out;
+    transition: transform 500ms ease-out;
     position: absolute;
     border-radius: 50%;
     left: 0;
@@ -52,13 +56,24 @@ export const UsageChart = styled.div<UsageChartType>`
   }
 `;
 
+export const ChartDecorate = styled.div`
+  width: 18rem;
+  height: 18rem;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 0.5rem dashed #e1e4e2;
+  border-radius: 50%;
+`;
+
 export const UsagePercentage = styled.p`
   font-weight: 700;
   font-size: 2.5rem;
   position: absolute;
-  top: 65%;
+  top: 40%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
 `;
 
 export const StatusBox = styled.div`
