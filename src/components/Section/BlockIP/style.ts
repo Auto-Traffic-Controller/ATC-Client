@@ -33,6 +33,7 @@ export const AttackTypeFilter = styled.select`
   height: 2rem;
   padding: 0.469rem 0.75rem;
   border: none;
+  text-align: center;
 `;
 
 export const ListHeader = styled.div`

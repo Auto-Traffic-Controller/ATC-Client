@@ -9,6 +9,11 @@ type NewOrOld = "new" | "old";
 const BlockIP: React.FC = () => {
   const { blockIP } = useGetBlockIP();
   const [newOrOld, setNewOrOld] = useState<NewOrOld>("new");
+  const [countryName, setCountryName] = useState<string>("");
+  const countryOptions = new Set<string>();
+
+  // make set data
+  blockIP.forEach(({ country_name }) => countryOptions.add(country_name));
 
   const selectStyle = (selectedItem: NewOrOld) =>
     newOrOld === selectedItem &&
@@ -34,8 +39,13 @@ const BlockIP: React.FC = () => {
           >
             오래된
           </S.NewOrOldButton>
-          <S.AttackTypeFilter>
-            <option>공격유형</option>
+          <S.AttackTypeFilter onChange={(e) => setCountryName(e.target.value)}>
+            <option value="">국가</option>
+            {[...countryOptions].map((data, index) => (
+              <option key={index} value={data}>
+                {data.slice(0, 8) + (data.length > 8 ? ".." : "")}
+              </option>
+            ))}
           </S.AttackTypeFilter>
         </S.FilterWrap>
       </S.SectionHeader>
@@ -51,19 +61,27 @@ const BlockIP: React.FC = () => {
         </S.ListHeaderText>
       </S.ListHeader>
       <S.ListWrapper>
-        {blockIP.map((data, index) => (
-          <S.ListElement key={index}>
-            <S.ListElementText>{data.ip}</S.ListElementText>
-            <S.ListElementText>{data.country_name}</S.ListElementText>
-            <S.ListElementText
-              css={css`
-                text-align: end;
-              `}
-            >
-              {data.timestamp.split(":")[0]}시 {data.timestamp.split(":")[1]}분
-            </S.ListElementText>
-          </S.ListElement>
-        ))}
+        {(newOrOld === "new" ? blockIP : [...blockIP].reverse())
+          .filter(({ country_name }) =>
+            countryName ? country_name === countryName : true
+          )
+          .map((data, index) => (
+            <S.ListElement key={index}>
+              <S.ListElementText>{data.ip}</S.ListElementText>
+              <S.ListElementText>
+                {data.country_name.slice(0, 14) +
+                  (data.country_name.length > 14 ? ".." : "")}
+              </S.ListElementText>
+              <S.ListElementText
+                css={css`
+                  text-align: end;
+                `}
+              >
+                {data.timestamp.replace("-", " ").split(":")[0]}시{" "}
+                {data.timestamp.split(":")[1]}분
+              </S.ListElementText>
+            </S.ListElement>
+          ))}
       </S.ListWrapper>
     </S.BlockIPSection>
   );
