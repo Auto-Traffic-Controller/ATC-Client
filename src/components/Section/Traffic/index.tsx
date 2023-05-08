@@ -4,53 +4,47 @@ import * as S from "./style";
 import { Line } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 import { CategoryScale, ScriptableContext } from "chart.js";
+import { useGetNetworkPackets } from "apis/metric";
 
 Chart.register(CategoryScale);
 
-const data = {
-  labels: [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-  ],
-  datasets: [
-    {
-      label: "none",
-      data: [
-        5, 66, 33, 22, 11, 5, 66, 33, 22, 11, 5, 66, 33, 22, 11, 5, 66, 33, 22,
-        11,
-      ],
-      fill: true,
-      borderColor: "#57AC6D",
-      borderWidth: 4,
-      lineTension: 0.2,
-      backgroundColor: (context: ScriptableContext<"line">) => {
-        const ctx = context.chart.ctx;
-        const gradient = ctx.createLinearGradient(0, 0, 0, 350);
-        gradient.addColorStop(0, "#DEFFE6");
-        gradient.addColorStop(1, "rgba(204, 230, 210, 0) ");
-        return gradient;
-      },
-    },
-  ],
-};
-
 const Traffic = () => {
+  const { networkPackets = [] } = useGetNetworkPackets();
+
+  const data = {
+    labels: networkPackets?.map((data) => data.timestamp),
+    datasets: [
+      {
+        label: "none",
+        data: networkPackets?.map((data) => data.packet),
+        fill: true,
+        borderColor: "#57AC6D",
+        borderWidth: 4,
+        lineTension: 0.2,
+        backgroundColor: (context: ScriptableContext<"line">) => {
+          const ctx = context.chart.ctx;
+          const gradient = ctx.createLinearGradient(0, 0, 0, 350);
+          gradient.addColorStop(0, "#DEFFE6");
+          gradient.addColorStop(1, "rgba(204, 230, 210, 0) ");
+          return gradient;
+        },
+      },
+    ],
+  };
+
+  const average =
+    Math.round(
+      (networkPackets
+        .map((value) => value.packet)
+        .reduce((value, current) => {
+          return current + value;
+        }, 0) /
+        60) *
+        10
+    ) / 10;
+
+  const maximum = Math.max(...networkPackets.map((value) => value.packet));
+
   return (
     <S.TrafficSection>
       <S.SectionHeader>
@@ -58,11 +52,11 @@ const Traffic = () => {
         <S.TrafficCategoryWrap>
           <S.TrafficCategory>
             <S.TrafficValueCategory>Current</S.TrafficValueCategory>
-            <S.TrafficValue>1.20M</S.TrafficValue>
+            <S.TrafficValue>{networkPackets[0]?.packet ?? 0}B</S.TrafficValue>
           </S.TrafficCategory>
           <S.TrafficCategory>
             <S.TrafficValueCategory>Average</S.TrafficValueCategory>
-            <S.TrafficValue>7.53M</S.TrafficValue>
+            <S.TrafficValue>{average}B</S.TrafficValue>
           </S.TrafficCategory>
           <S.TrafficCategory
             css={css`
@@ -70,7 +64,7 @@ const Traffic = () => {
             `}
           >
             <S.TrafficValueCategory>Maximum</S.TrafficValueCategory>
-            <S.TrafficValue>30.94M</S.TrafficValue>
+            <S.TrafficValue>{maximum}B</S.TrafficValue>
           </S.TrafficCategory>
         </S.TrafficCategoryWrap>
       </S.SectionHeader>
