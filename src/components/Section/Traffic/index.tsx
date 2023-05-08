@@ -9,13 +9,13 @@ import { useGetNetworkPackets } from "apis/metric";
 Chart.register(CategoryScale);
 
 const Traffic = () => {
-  const { networkPackets = [] } = useGetNetworkPackets();
+  const { networkPackets } = useGetNetworkPackets();
 
   const data = {
     labels: networkPackets?.map((data) => data.timestamp),
     datasets: [
       {
-        label: "none",
+        label: "Usage",
         data: networkPackets?.map((data) => data.packet),
         fill: true,
         borderColor: "#57AC6D",
@@ -31,6 +31,8 @@ const Traffic = () => {
       },
     ],
   };
+
+  const current = networkPackets[0]?.packet ?? 0;
 
   const average =
     Math.round(
@@ -52,7 +54,7 @@ const Traffic = () => {
         <S.TrafficCategoryWrap>
           <S.TrafficCategory>
             <S.TrafficValueCategory>Current</S.TrafficValueCategory>
-            <S.TrafficValue>{networkPackets[0]?.packet ?? 0}B</S.TrafficValue>
+            <S.TrafficValue>{current}B</S.TrafficValue>
           </S.TrafficCategory>
           <S.TrafficCategory>
             <S.TrafficValueCategory>Average</S.TrafficValueCategory>
