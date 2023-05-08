@@ -1,4 +1,8 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 import type { AppProps } from "next/app";
 import GlobalStyle from "styles/GlobalStyle";
 
@@ -8,8 +12,10 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <QueryClientProvider client={client}>
-        <GlobalStyle />
-        <Component {...pageProps} />
+        <Hydrate state={pageProps.dehydratedState}>
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </Hydrate>
       </QueryClientProvider>
     </>
   );
