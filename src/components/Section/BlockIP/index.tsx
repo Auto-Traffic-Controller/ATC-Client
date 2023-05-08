@@ -2,88 +2,12 @@ import { css } from "@emotion/react";
 import { SectionTitle } from "components/Section/style";
 import { useState } from "react";
 import * as S from "./style";
+import { useGetBlockIP } from "apis/block";
 
 type NewOrOld = "new" | "old";
 
-const testData = [
-  {
-    IP: "192.168.123.123",
-    country: "🇰🇷 Korea",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    country: "🇰🇷 Korea",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    country: "🇰🇷 Korea",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    country: "🇰🇷 Korea",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    country: "🇰🇷 Korea",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    country: "🇰🇷 Korea",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    country: "🇰🇷 Korea",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    country: "🇰🇷 Korea",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    country: "🇰🇷 Korea",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    country: "🇰🇷 Korea",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    country: "🇰🇷 Korea",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    country: "🇰🇷 Korea",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    country: "🇰🇷 Korea",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    country: "🇰🇷 Korea",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    country: "🇰🇷 Korea",
-    time: "8시 35분",
-  },
-];
-
 const BlockIP: React.FC = () => {
+  const { blockIP } = useGetBlockIP();
   const [newOrOld, setNewOrOld] = useState<NewOrOld>("new");
 
   const selectStyle = (selectedItem: NewOrOld) =>
@@ -127,16 +51,16 @@ const BlockIP: React.FC = () => {
         </S.ListHeaderText>
       </S.ListHeader>
       <S.ListWrapper>
-        {testData.map((data, index) => (
+        {blockIP.map((data, index) => (
           <S.ListElement key={index}>
-            <S.ListElementText>{data.IP}</S.ListElementText>
-            <S.ListElementText>{data.country}</S.ListElementText>
+            <S.ListElementText>{data.ip}</S.ListElementText>
+            <S.ListElementText>{data.country_name}</S.ListElementText>
             <S.ListElementText
               css={css`
                 text-align: end;
               `}
             >
-              {data.time}
+              {data.timestamp.split(":")[0]}시 {data.timestamp.split(":")[1]}분
             </S.ListElementText>
           </S.ListElement>
         ))}
