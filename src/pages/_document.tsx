@@ -8,6 +8,8 @@ export default function Document() {
           href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css"
           rel="stylesheet"
         />
+        <link rel="icon" href="/favicon.png" />
+        <title>Auto Traffic Controller</title>
       </Head>
       <body>
         <Main />
