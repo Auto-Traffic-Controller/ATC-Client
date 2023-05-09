@@ -6,3 +6,7 @@ export const metricUrl = {
 export const blockUrl = {
   getBlockIP: () => `/block/ip`,
 };
+
+export const attackUrl = {
+  getAttackLog: () => `/attack/log`,
+};
