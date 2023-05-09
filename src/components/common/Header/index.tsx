@@ -3,7 +3,7 @@ import * as S from "./style";
 import { Logo, LoginIcon, Alarm } from "assets";
 
 const Header: React.FC = () => {
-  const userId = "hellogsm";
+  const userId = "GSM";
   return (
     <S.Header>
       <S.HeaderContents>
