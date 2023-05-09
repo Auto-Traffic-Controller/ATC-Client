@@ -2,89 +2,19 @@ import { SectionTitle } from "components/Section/style";
 import * as S from "./style";
 import { css } from "@emotion/react";
 import { useState } from "react";
-
-const testData = [
-  {
-    IP: "192.168.123.123",
-    attackType: "SYN Flooding",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    attackType: "SYN Flooding",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    attackType: "SYN Flooding",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    attackType: "SYN Flooding",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    attackType: "SYN Flooding",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    attackType: "SYN Flooding",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    attackType: "SYN Flooding",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    attackType: "SYN Flooding",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    attackType: "SYN Flooding",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    attackType: "SYN Flooding",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    attackType: "SYN Flooding",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    attackType: "SYN Flooding",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    attackType: "SYN Flooding",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    attackType: "SYN Flooding",
-    time: "8시 35분",
-  },
-  {
-    IP: "192.168.123.123",
-    attackType: "SYN Flooding",
-    time: "8시 35분",
-  },
-];
+import { useGetAttackLog } from "apis/attack";
+import { timeFormatting } from "libs/timeFormatting";
 
 type NewOrOld = "new" | "old";
 
 const AttackLog: React.FC = () => {
+  const { attackLog } = useGetAttackLog();
   const [newOrOld, setNewOrOld] = useState<NewOrOld>("new");
+  const [selectAttackType, setSelectAttackType] = useState<string>("");
+  const attckType = new Set<string>();
+
+  // make set data
+  attackLog.forEach(({ attack_type }) => attckType.add(attack_type));
 
   const selectStyle = (selectedItem: NewOrOld) =>
     newOrOld === selectedItem &&
@@ -110,8 +40,15 @@ const AttackLog: React.FC = () => {
           >
             오래된
           </S.NewOrOldButton>
-          <S.AttackTypeFilter>
-            <option>공격유형</option>
+          <S.AttackTypeFilter
+            onChange={(e) => setSelectAttackType(e.target.value)}
+          >
+            <option value="">공격유형</option>
+            {[...attckType].map((data, index) => (
+              <option key={index} value={data}>
+                {data}
+              </option>
+            ))}
           </S.AttackTypeFilter>
         </S.FilterWrap>
       </S.SectionHeader>
@@ -127,19 +64,23 @@ const AttackLog: React.FC = () => {
         </S.ListHeaderText>
       </S.ListHeader>
       <S.ListWrapper>
-        {testData.map((data, index) => (
-          <S.ListElement key={index}>
-            <S.ListElementText>{data.IP}</S.ListElementText>
-            <S.ListElementText>{data.attackType}</S.ListElementText>
-            <S.ListElementText
-              css={css`
-                text-align: end;
-              `}
-            >
-              {data.time}
-            </S.ListElementText>
-          </S.ListElement>
-        ))}
+        {(newOrOld === "new" ? attackLog : [...attackLog].reverse())
+          .filter(({ attack_type }) =>
+            selectAttackType ? attack_type === selectAttackType : true
+          )
+          .map((data, index) => (
+            <S.ListElement key={index}>
+              <S.ListElementText>{data.ip}</S.ListElementText>
+              <S.ListElementText>{data.attack_type}</S.ListElementText>
+              <S.ListElementText
+                css={css`
+                  text-align: end;
+                `}
+              >
+                {timeFormatting(data.timestamp)}
+              </S.ListElementText>
+            </S.ListElement>
+          ))}
       </S.ListWrapper>
     </S.AttackLogSection>
   );
