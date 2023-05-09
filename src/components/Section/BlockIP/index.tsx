@@ -3,6 +3,7 @@ import { SectionTitle } from "components/Section/style";
 import { useState } from "react";
 import * as S from "./style";
 import { useGetBlockIP } from "apis/block";
+import { timeFormatting } from "libs/timeFormatting";
 
 type NewOrOld = "new" | "old";
 
@@ -43,7 +44,7 @@ const BlockIP: React.FC = () => {
             <option value="">국가</option>
             {[...countryOptions].map((data, index) => (
               <option key={index} value={data}>
-                {data.slice(0, 8) + (data.length > 8 ? ".." : "")}
+                {data?.slice(0, 8) + (data?.length > 8 ? ".." : "")}
               </option>
             ))}
           </S.AttackTypeFilter>
@@ -69,16 +70,15 @@ const BlockIP: React.FC = () => {
             <S.ListElement key={index}>
               <S.ListElementText>{data.ip}</S.ListElementText>
               <S.ListElementText>
-                {data.country_name.slice(0, 14) +
-                  (data.country_name.length > 14 ? ".." : "")}
+                {data.country_name?.slice(0, 14) +
+                  (data.country_name?.length > 14 ? ".." : "")}
               </S.ListElementText>
               <S.ListElementText
                 css={css`
                   text-align: end;
                 `}
               >
-                {data.timestamp.replace("-", " ").split(":")[0]}시{" "}
-                {data.timestamp.split(":")[1]}분
+                {timeFormatting(data.timestamp)}
               </S.ListElementText>
             </S.ListElement>
           ))}
