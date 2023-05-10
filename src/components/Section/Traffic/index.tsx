@@ -34,18 +34,28 @@ const Traffic = () => {
 
   const current = networkPackets[0]?.packet ?? 0;
 
-  const average =
-    Math.round(
-      (networkPackets
-        .map((value) => value.packet)
-        .reduce((value, current) => {
-          return current + value;
-        }, 0) /
-        60) *
-        10
-    ) / 10;
+  const average = Math.round(
+    networkPackets
+      .map((value) => value.packet)
+      .reduce((value, current) => {
+        return current + value;
+      }, 0) / 60
+  );
 
   const maximum = Math.max(...networkPackets.map((value) => value.packet));
+
+  const unitConversion = (value: number) => {
+    const forMB = 1048576;
+    const forKB = 1024;
+
+    if (value >= forKB) {
+      return Math.round(value / forMB) + "MB";
+    } else if (value >= forKB) {
+      return Math.round(value / forKB) + "KB";
+    } else {
+      return value + "B";
+    }
+  };
 
   return (
     <S.TrafficSection>
@@ -54,11 +64,11 @@ const Traffic = () => {
         <S.TrafficCategoryWrap>
           <S.TrafficCategory>
             <S.TrafficValueCategory>Current</S.TrafficValueCategory>
-            <S.TrafficValue>{current}B</S.TrafficValue>
+            <S.TrafficValue>{unitConversion(current)}</S.TrafficValue>
           </S.TrafficCategory>
           <S.TrafficCategory>
             <S.TrafficValueCategory>Average</S.TrafficValueCategory>
-            <S.TrafficValue>{average}B</S.TrafficValue>
+            <S.TrafficValue>{unitConversion(average)}</S.TrafficValue>
           </S.TrafficCategory>
           <S.TrafficCategory
             css={css`
@@ -66,7 +76,7 @@ const Traffic = () => {
             `}
           >
             <S.TrafficValueCategory>Maximum</S.TrafficValueCategory>
-            <S.TrafficValue>{maximum}B</S.TrafficValue>
+            <S.TrafficValue>{unitConversion(maximum)}</S.TrafficValue>
           </S.TrafficCategory>
         </S.TrafficCategoryWrap>
       </S.SectionHeader>
