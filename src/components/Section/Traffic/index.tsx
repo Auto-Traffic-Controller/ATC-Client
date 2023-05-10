@@ -48,7 +48,7 @@ const Traffic = () => {
     const forMB = 1048576;
     const forKB = 1024;
 
-    if (value >= forKB) {
+    if (value >= forMB) {
       return Math.round(value / forMB) + "MB";
     } else if (value >= forKB) {
       return Math.round(value / forKB) + "KB";
