@@ -89,6 +89,13 @@ const Traffic = () => {
                 beginAtZero: true,
                 display: false,
               },
+              y: {
+                title: {
+                  display: true,
+                  text: "단위: byte",
+                  align: "end",
+                },
+              },
             },
             elements: {
               point: {
